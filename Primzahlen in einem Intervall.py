@@ -2,7 +2,7 @@
 #                      #
 #      Primzahlen      #
 #   T.Hoppe Nov 2021   #
-#         Git          #
+#        Github        #
 #                      #
 ########################
 
@@ -24,6 +24,32 @@ def eratosthenes(end):
             primzahlliste[j] = False
             j = j + i
     return [x for x in range(end) if primzahlliste[x] == True]
+
+
+def atkins(end):
+    results = [2, 3, 5]
+    sieve = [False] * (end + 1)
+    factor = int(math.sqrt(end)) + 1
+    for i in range(1, factor):
+        for j in range(1, factor):
+            n = 4 * i ** 2 + j ** 2
+            if (n <= end) and (n % 12 == 1 or n % 12 == 5):
+                sieve[n] = not sieve[n]
+            n = 3 * i ** 2 + j ** 2
+            if (n <= end) and (n % 12 == 7):
+                sieve[n] = not sieve[n]
+            if i > j:
+                n = 3 * i ** 2 - j ** 2
+                if (n <= end) and (n % 12 == 11):
+                    sieve[n] = not sieve[n]
+    for index in range(5, factor):
+        if sieve[index]:
+            for jndex in range(index ** 2, end, index ** 2):
+                sieve[jndex] = False
+    for index in range(7, end):
+        if sieve[index]:
+            results.append(index)
+    return results
 
 
 def primzahlzwillinge(end):
@@ -75,12 +101,14 @@ def ausgabeauswertung(sz, sd, z, e, sw, inter):
 
 
 while True:
+
     print("\nMenü:")
     print("-----")
     print("(1) Ausgabe von Primzahlen in einem definierten Intervall")
     print("(2) Das Sieb des Eratosthenes")
-    print("(3) Die Primzahlfunktion")
-    print("(4) Die Primzahlzwillinge")
+    print("(3) Das Sieb von Atkins")
+    print("(4) Die Primzahlfunktion")
+    print("(5) Die Primzahlzwillinge")
     print("(0) Ende\n")
     auswahl = input("Deine Wahl: ")
 
@@ -123,11 +151,25 @@ while True:
         ende = eingabeendwert()
         startzeit = time.time()
         startdatum = time.strftime("%d.%m.%Y um %H:%M:%S")
-        print(eratosthenes(ende))
-        zaehler = (len(eratosthenes(ende)))
+        ausgabe = eratosthenes(ende)
+        zaehler = (len(ausgabe))
+        print("\n", ausgabe)
         ausgabeauswertung(startzeit, startdatum, zaehler, ende, 2, True)
 
     elif auswahl == "3":
+
+        print("\nDas Sieb von Atkins")
+        print("-------------------------\n")
+
+        ende = eingabeendwert()
+        startzeit = time.time()
+        startdatum = time.strftime("%d.%m.%Y um %H:%M:%S")
+        ausgabe = atkins(ende)
+        zaehler = (len(ausgabe))
+        print("\n", ausgabe)
+        ausgabeauswertung(startzeit, startdatum, zaehler, ende, 2, True)
+
+    elif auswahl == "4":
 
         print("\nDie Primzahlfunktion")
         print("--------------------\n")
@@ -158,7 +200,7 @@ while True:
         plt.xlabel("Untersuchtes Intervall")
         plt.show()
 
-    elif auswahl == "4":
+    elif auswahl == "5":
 
         print("\nDie Primzahlzwillinge")
         print("---------------------\n")

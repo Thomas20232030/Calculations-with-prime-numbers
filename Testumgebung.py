@@ -42,14 +42,16 @@ def atkins(limit):
     return results
 
 
-grenze = 1000000000
-sz = time.time()
-print("Atkins")
-atkins(grenze)
-ez = time.time()
-print(ez - sz)
-sz = time.time()
-print("Eratosthenes")
-eratosthenes(grenze)
-ez = time.time()
-print(ez - sz)
+for grenze in range(100000, 1000000, 100000):
+
+    asz = time.time()
+    atkins(grenze)
+    aez = time.time()
+    ea = (aez - asz)
+
+    esz = time.time()
+    eratosthenes(grenze)
+    eez = time.time()
+    ee = eez - esz
+
+    print(grenze, " / Atkins:", ea, "/ Eratosthenes:", ee, "Prozent = ", (ea / ee) * 100, "%")
