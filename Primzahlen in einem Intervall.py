@@ -1,10 +1,10 @@
-########################
-#                      #
-#      Primzahlen      #
-#   T.Hoppe Nov 2021   #
-#        Github        #
-#                      #
-########################
+########################################################################
+#                                                                      #
+#  Calculations with prime numbers                                     #
+#  Thomas Hoppe November 2021                                          #
+#  https://github.com/Thomas20232030https://github.com/Thomas20232030  #
+#                                                                      #
+########################################################################
 
 import math
 import time
@@ -14,7 +14,7 @@ from sympy import primepi
 
 def eratosthenes(end):
     is_prime = [False] * 2 + [True] * (end - 1)
-    for n in range(int(end**0.5 + 1.5)):  # stop at ``sqrt(end)``
+    for n in range(int(end**0.5 + 1.5)):
         if is_prime[n]:
             for i in range(n*n, end+1, n):
                 is_prime[i] = False
