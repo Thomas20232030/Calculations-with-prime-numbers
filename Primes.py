@@ -130,7 +130,7 @@ while True:
     print("(3) Das Sieb von Atkins")
     print("(4) Die Primzahlfunktion")
     print("(5) Die Primzahlzwillinge")
-    print("(6) Der Miller-Rabin-Test mit 40 Drchläufen")
+    print("(6) Der Miller-Rabin-Test mit 40 Durchläufen")
     print("(0) Ende\n")
     auswahl = input("Deine Wahl: ")
 
