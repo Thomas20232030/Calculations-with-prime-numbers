@@ -1,13 +1,14 @@
-########################################################################
-#                                                                      #
-#  Calculations with prime numbers                                     #
-#  Thomas Hoppe November 2021                                          #
-#  https://github.com/Thomas20232030https://github.com/Thomas20232030  #
-#                                                                      #
-########################################################################
+#######################################
+#                                     #
+#  Calculations with prime numbers    #
+#  Thomas Hoppe November 2021         #
+#  https://github.com/Thomas20232030  #
+#                                     #
+#######################################
 
 import math
 import time
+import random
 import matplotlib.pyplot as plt
 from sympy import primepi
 
@@ -45,6 +46,31 @@ def atkins(end):
         if sieve[index]:
             results.append(index)
     return results
+
+
+def miller_rabin(n, k):
+    if n == 2 or n == 3:
+        return True
+
+    if n % 2 == 0:
+        return False
+
+    r, s = 0, n - 1
+    while s % 2 == 0:
+        r += 1
+        s //= 2
+    for _ in range(k):
+        a = random.randrange(2, n - 1)
+        x = pow(a, s, n)
+        if x == 1 or x == n - 1:
+            continue
+        for _ in range(r - 1):
+            x = pow(x, 2, n)
+            if x == n - 1:
+                break
+        else:
+            return False
+    return True
 
 
 def primzahlzwillinge(end):
@@ -104,6 +130,7 @@ while True:
     print("(3) Das Sieb von Atkins")
     print("(4) Die Primzahlfunktion")
     print("(5) Die Primzahlzwillinge")
+    print("(6) Der Miller-Rabin-Test mit 40 Drchläufen")
     print("(0) Ende\n")
     auswahl = input("Deine Wahl: ")
 
@@ -215,6 +242,15 @@ while True:
         plt.xticks([])
         plt.xlabel("Anzahl : " + str(zaehler))
         plt.show()
+
+    elif auswahl == "6":
+
+        print("\nDer Miller-Rabin-Test mit 40 Durchläufen")
+        print("----------------------------------------\n")
+
+        ende = eingabeendwert()
+        print(miller_rabin(ende, 40))
+        input("\nWeiter mit jeder beliebigen Taste...")
 
     elif auswahl == "0":
 
