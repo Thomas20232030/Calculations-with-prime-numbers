@@ -13,6 +13,29 @@ import matplotlib.pyplot as plt
 from sympy import primepi
 
 
+def primfaktoren(n):
+
+    f = []
+    while n % 2 == 0:
+        f = f + [2]
+        n = n // 2
+    while n % 3 == 0:
+        f = f + [3]
+        n = n // 3
+    t = 5
+    diff = 2
+    w = round(math.sqrt(n))
+    while t <= w:
+        while n % t == 0:
+            f = f + [t]
+            n = n // t
+        t = t + diff
+        diff = 6 - diff
+    if n > 1:
+        f = f + [n]
+    return f
+
+
 def eratosthenes(end):
     is_prime = [False] * 2 + [True] * (end - 1)
     for n in range(int(end**0.5 + 1.5)):
@@ -131,6 +154,7 @@ while True:
     print("(4) Die Primzahlfunktion")
     print("(5) Die Primzahlzwillinge")
     print("(6) Der Miller-Rabin-Test mit 40 Durchläufen")
+    print("(7) Zerlegung in Primfaktoren")
     print("(0) Ende\n")
     auswahl = input("Deine Wahl: ")
 
@@ -249,7 +273,36 @@ while True:
         print("----------------------------------------\n")
 
         ende = eingabeendwert()
-        print(miller_rabin(ende, 40))
+        if miller_rabin(ende, 40):
+            print("Dies ist eine Primzahl")
+        else:
+            print("Dies ist keine Primzahl")
+
+        input("\nWeiter mit jeder beliebigen Taste...")
+
+    elif auswahl == "7":
+
+        print("\nPrimfaktorenzerlegung")
+        print("---------------------\n")
+
+        zahl = eingabeendwert()
+        print()
+        startzeit = time.time()
+        startdatum = time.strftime("%d.%m.%Y um %H:%M:%S")
+        print(primfaktoren(zahl))
+        endzeit = time.time()
+        print("\nBerechnung gestartet am:", startdatum)
+        print("Berechnung beendet am  :", time.strftime("%d.%m.%Y um %H:%M:%S"))
+        dauer = endzeit-startzeit
+        if dauer >= 3600:
+            print("Dauer der Berechnung   :", round(dauer / 3600, 2), "Stunden")
+
+        if 3600 > dauer >= 60:
+            print("Dauer der Berechnung   :", round(dauer / 60, 2), "Minuten")
+
+        if dauer < 60:
+            print("Dauer der Berechnung   :", round(dauer, 2), "Sekunden")
+
         input("\nWeiter mit jeder beliebigen Taste...")
 
     elif auswahl == "0":
