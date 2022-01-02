@@ -159,8 +159,8 @@ def ausgabeauswertung(sz, sd, z, e, sw, inter):
 
 while True:
 
-    print("\nMenü:")
-    print("-----")
+    print("\nMenü Primzahlenberechnungen:")
+    print("----------------------------")
     print("(1) Ausgabe von Primzahlen in einem definierten Intervall")
     print("(2) Das Sieb des Eratosthenes")
     print("(3) Das Sieb von Atkins")
