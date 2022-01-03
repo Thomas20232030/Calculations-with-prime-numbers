@@ -159,16 +159,12 @@ def ausgabeauswertung(sz, sd, z, e, sw, inter):
 
 while True:
 
-    print("\nMenü Primzahlenberechnungen:")
-    print("----------------------------")
-    print("(1) Ausgabe von Primzahlen in einem definierten Intervall")
-    print("(2) Das Sieb des Eratosthenes")
-    print("(3) Das Sieb von Atkins")
-    print("(4) Die Primzahlfunktion")
-    print("(5) Die Primzahlzwillinge")
-    print("(6) Der Miller-Rabin-Test mit 40 Durchläufen")
-    print("(7) Die Zerlegung in Primfaktoren")
-    print("(8) Die Mersenne-Primzahlen")
+    print("\nPrimzahlenberechnungen:")
+    print("-----------------------")
+    print("(1) Primzahlen in einem Intervall    (2) Das Sieb des Eratosthenes")
+    print("(3) Das Sieb von Atkins              (4) Die Primzahlfunktion")
+    print("(5) Die Primzahlzwillinge            (6) Der Miller-Rabin-Test")
+    print("(7) Die Zerlegung in Primfaktoren    (8) Die Mersenne-Primzahlen\n")
     print("(0) Ende\n")
     auswahl = input("Deine Wahl: ")
 
