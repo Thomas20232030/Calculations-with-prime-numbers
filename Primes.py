@@ -1,10 +1,10 @@
-#######################################
-#                                     #
-#  Calculations with prime numbers    #
-#  Thomas Hoppe November 2021         #
-#  https://github.com/Thomas20232030  #
-#                                     #
-#######################################
+#######################################################################
+#                                                                     #
+#  Calculations with prime numbers                                    #
+#  Thomas Hoppe November 2021                                         #
+#  https://github.com/Thomas20232030/Calculations-with-prime-numbers  #
+#                                                                     #
+#######################################################################
 
 import math
 import time
